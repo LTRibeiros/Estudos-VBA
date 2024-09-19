@@ -1,0 +1,114 @@
+Attribute VB_Name = "ex2"
+Option Base 1
+
+Sub ex2()
+
+Worksheets("ex2").Activate
+
+Dim vetor(12) As Double
+Dim i As Integer
+Dim x As Integer
+Dim y As Integer
+Dim menor As Double
+Dim maior As Double
+Dim aux As Double
+Dim media1 As Double
+Dim media2 As Double
+Dim media3 As Double
+
+For i = 1 To UBound(vetor)
+vetor(i) = InputBox("Quantidade de produtos vendidos no mês: " & i)
+Cells(i, "A") = vetor(i)
+Next i
+
+x = InputBox("Consultar vendas de algum mês novamente?" & vbCrLf & "1 - sim" & vbCrLf & "2 - não")
+If x = 1 Then
+ind = InputBox("Qual mês?")
+MsgBox ("Valor de produtos vendidos no mês" & ind & ":" & " " & vetor(ind))
+GoTo ok
+ Else
+ 
+ok:
+
+
+
+For i = 1 To 12
+ For j = (i + 1) To 12
+
+If vetor(j) < vetor(i) Then
+aux = vetor(i)
+vetor(i) = vetor(j)
+vetor(j) = aux
+ 
+ 
+ End If
+Next j
+Next i
+
+For i = 1 To 12
+Cells(i, "B") = vetor(i)
+
+
+Next i
+End If
+
+For i = 9 To 12
+soma = soma + vetor(i)
+media1 = soma / 4
+
+
+Next i
+MsgBox ("Média do grupo 1:" & media1)
+soma = 0
+
+For i = 5 To 8
+soma = soma + vetor(i)
+media2 = soma / 4
+
+
+Next i
+MsgBox ("Média do grupo 2:" & media2)
+soma = 0
+
+For i = 1 To 4
+soma = soma + vetor(i)
+media3 = soma / 4
+
+
+Next i
+MsgBox ("Média do grupo 3:" & media3)
+
+MsgBox ("Menor valor: " & vetor(1) & vbCrLf & "maior valor: " & vetor(12))
+
+y = InputBox("Consultar média de algum grupo?")
+
+If y = 1 Then
+MsgBox ("Média do grupo 1:" & media1)
+
+Else
+
+If y = 2 Then
+MsgBox ("Média do grupo 2:" & media2)
+
+Else
+
+If y = 3 Then
+MsgBox ("Média do grupo 3:" & media3)
+
+End If
+End If
+End If
+
+
+End Sub
+
+
+
+
+
+
+
+
+
+
+
